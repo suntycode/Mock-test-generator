@@ -1,0 +1,26 @@
+{
+  "General Awareness": {
+    "History": ["Ancient India", "Medieval India", "Modern India", "World History"],
+    "Polity and Constitution": ["Constitutional Provisions", "Amendments", "Parliament and Governance", "Acts and Laws", "Judiciary"],
+    "Geography": ["Indian Geography", "World Geography", "Physical Geography", "Agriculture", "Minerals and Resources"],
+    "Economy": ["Indian Economy", "Budget and Schemes", "Banking and Finance"],
+    "General Science": ["Physics", "Chemistry", "Biology"],
+    "Computer Awareness": ["Fundamentals", "Networking", "Software and Shortcuts", "Abbreviations"],
+    "Sports": ["Tournaments and Trophies", "Rules and Terminology"],
+    "Current Affairs": ["National", "International", "Defence", "Awards and Reports", "Schemes and Policies", "Science and Tech"],
+    "Static GK": ["Art and Culture", "Books and Authors", "Miscellaneous"]
+  },
+  "Mathematics": {
+    "Arithmetic": ["Percentage", "Profit and Loss", "Simple Interest", "Compound Interest", "Ratio and Proportion", "Average", "Time and Work", "Time Speed Distance", "Partnership", "Mixture and Alligation", "Discount"],
+    "Number System": ["LCM and HCF", "Simplification", "Divisibility", "Prime Factors", "BODMAS", "Remainders"],
+    "Algebra": ["Linear Equations", "Quadratic Equations", "Identities", "Surds and Indices"],
+    "Geometry": ["Lines and Angles", "Triangles", "Circles", "Quadrilaterals"],
+    "Mensuration": ["2D", "3D"],
+    "Trigonometry": ["Ratios and Identities", "Heights and Distances"],
+    "Statistics and Data": ["Mean Median Mode", "Variance", "Data Interpretation"]
+  },
+  "General Intelligence and Reasoning": {
+    "Verbal Reasoning": ["Analogy", "Classification (Odd One Out)", "Series (Number)", "Series (Alphabet)", "Coding-Decoding", "Letter Cluster Pairs", "Blood Relations", "Direction and Distance", "Ranking and Order", "Seating Arrangement", "Box and Stacking Arrangement", "Mathematical Operations (Symbols)", "Data Sufficiency", "Syllogism", "Venn Diagram", "Counting Symbols/Numbers"],
+    "Non-Verbal Reasoning": ["Figure Series", "Mirror and Water Image", "Paper Folding", "Embedded Figures"]
+  }
+}
