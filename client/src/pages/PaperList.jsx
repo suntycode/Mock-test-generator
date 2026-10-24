@@ -51,6 +51,7 @@ import {
   Database,
   Calendar,
   Layers3,
+  FileCode,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -260,6 +261,12 @@ export default function PaperList() {
           >
             <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
             Refresh
+          </Button>
+          <Button asChild size="sm" variant="outline" className="gap-2">
+            <Link to="/upload?tab=json">
+              <FileCode className="h-4 w-4 text-primary" />
+              Import JSON
+            </Link>
           </Button>
           <Button asChild size="sm" className="gap-2">
             <Link to="/upload">
