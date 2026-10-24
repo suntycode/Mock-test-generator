@@ -1,5 +1,13 @@
 import { asyncHandler } from '../utils/errors.js';
-import { createPaper, deletePaper, getPageImagePath, getPaper, listPapers } from '../services/papers.service.js';
+import {
+  addQuestionsToPaper,
+  createPaper,
+  deletePaper,
+  getPageImagePath,
+  getPaper,
+  importPaperWithQuestions,
+  listPapers
+} from '../services/papers.service.js';
 import { startPaperExtraction } from '../services/extraction.service.js';
 import { approvePaper } from '../services/questions.service.js';
 import TokenUsage from '../models/TokenUsage.js';
@@ -7,6 +15,16 @@ import TokenUsage from '../models/TokenUsage.js';
 export const uploadPaper = asyncHandler(async (req, res) => {
   const paper = await createPaper(req.body, req.file);
   res.status(201).json({ ok: true, data: paper });
+});
+
+export const importPaperJson = asyncHandler(async (req, res) => {
+  const result = await importPaperWithQuestions(req.body);
+  res.status(201).json({ ok: true, data: result });
+});
+
+export const appendQuestionsJson = asyncHandler(async (req, res) => {
+  const result = await addQuestionsToPaper(req.params.id, req.body);
+  res.status(201).json({ ok: true, data: result });
 });
 
 export const listAllPapers = asyncHandler(async (_req, res) => {

@@ -1,10 +1,24 @@
 import { Router } from 'express';
-import { approvePaperQuestions, extractPaper, getOnePaper, getPaperPage, getPaperUsage, listAllPapers, removePaper, uploadPaper } from '../controllers/papers.controller.js';
+import {
+  appendQuestionsJson,
+  approvePaperQuestions,
+  extractPaper,
+  getOnePaper,
+  getPaperPage,
+  getPaperUsage,
+  importPaperJson,
+  listAllPapers,
+  removePaper,
+  uploadPaper
+} from '../controllers/papers.controller.js';
 import { uploadPaperFile } from '../middleware/upload.js';
 
 const router = Router();
 
+router.post('/import-json', importPaperJson);
+router.post('/json', importPaperJson);
 router.post('/', uploadPaperFile, uploadPaper);
+router.post('/:id/questions', appendQuestionsJson);
 router.post('/:id/extract', extractPaper);
 router.post('/:id/approve', approvePaperQuestions);
 router.get('/', listAllPapers);
