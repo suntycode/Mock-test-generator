@@ -6,6 +6,7 @@ import Dashboard from '@/pages/Dashboard';
 import PaperList from '@/pages/PaperList';
 import UploadPaper from '@/pages/UploadPaper';
 import ReviewQuestions from '@/pages/ReviewQuestions';
+import CreateQuestion from '@/pages/CreateQuestion';
 import Analytics from '@/pages/Analytics';
 import CreateMock from '@/pages/CreateMock';
 import History from '@/pages/History';
@@ -33,6 +34,7 @@ export default function App() {
                 <Route path="/papers" element={<PaperList />} />
                 <Route path="/upload" element={<UploadPaper />} />
                 <Route path="/review" element={<ReviewQuestions />} />
+                <Route path="/create-question" element={<CreateQuestion />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/create-mock" element={<CreateMock />} />
                 <Route path="/history" element={<History />} />

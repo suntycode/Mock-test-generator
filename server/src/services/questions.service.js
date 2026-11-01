@@ -115,3 +115,10 @@ export async function approvePaper(id) {
   await paper.save();
   return { paper, approvedCount: result.modifiedCount };
 }
+
+export async function deleteQuestion(id) {
+  validId(id, 'Question');
+  const question = await Question.findByIdAndDelete(id);
+  if (!question) throw new AppError('QUESTION_NOT_FOUND', 'Question was not found.', 404);
+  return { deleted: true, questionId: id };
+}

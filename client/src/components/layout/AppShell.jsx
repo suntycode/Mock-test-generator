@@ -11,6 +11,7 @@ import {
   Menu,
   GraduationCap,
   ChevronRight,
+  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -24,6 +25,7 @@ const navItems = [
   { to: '/papers', label: 'Papers', icon: FileStack },
   { to: '/upload', label: 'Upload Paper', icon: UploadCloud },
   { to: '/review', label: 'Review Questions', icon: CheckSquare },
+  { to: '/create-question', label: 'Create Question', icon: Sparkles },
   { to: '/analytics', label: 'Analytics', icon: BarChart3 },
   { to: '/create-mock', label: 'Create Mock', icon: PlusCircle },
   { to: '/history', label: 'History', icon: History },
@@ -34,6 +36,7 @@ function getBreadcrumbLabel(pathname) {
   if (pathname.startsWith('/papers')) return 'Papers';
   if (pathname.startsWith('/upload')) return 'Upload Paper';
   if (pathname.startsWith('/review')) return 'Review Questions';
+  if (pathname.startsWith('/create-question')) return 'Create Question';
   if (pathname.startsWith('/analytics')) return 'Analytics';
   if (pathname.startsWith('/create-mock')) return 'Create Mock';
   if (pathname.startsWith('/history')) return 'History';
