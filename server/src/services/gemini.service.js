@@ -442,7 +442,14 @@ export function solveGeneratedQuestion(question) {
   return withAutoSwitch(
     'verify-generated',
     () => {
-      const prompt = `${solveGeneratedPrompt}\n\nQUESTION:\n${JSON.stringify({ question_text: question.question_text, options: question.options, language: question.language })}`;
+      const prompt = `${solveGeneratedPrompt}\n\nQUESTION:\n${JSON.stringify({
+        section: question.section,
+        category: question.category,
+        subcategory: question.subcategory,
+        question_text: question.question_text,
+        options: question.options,
+        language: question.language
+      })}`;
       return withRetry('verify-generated', { contents: prompt, responseSchema: solvedResponseSchema, schema: solvedQuestionSchema });
     },
     () => solveGeneratedQuestionWithGrok(question),

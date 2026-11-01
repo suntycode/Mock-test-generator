@@ -788,7 +788,7 @@ export default function Textbook() {
                       </div>
 
                       {q.explanation && (
-                        <div className="pt-1 text-muted-foreground leading-relaxed border-t border-emerald-500/20">
+                        <div className="pt-1 text-muted-foreground leading-relaxed border-t border-emerald-500/20 whitespace-pre-line">
                           <strong className="text-foreground">Explanation: </strong>
                           <MathText text={q.explanation} />
                         </div>
@@ -881,3 +881,4 @@ export default function Textbook() {
     </div>
   );
 }
+

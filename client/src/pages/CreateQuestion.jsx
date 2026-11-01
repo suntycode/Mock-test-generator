@@ -695,12 +695,12 @@ export default function CreateQuestion() {
 
                     {/* Explanation */}
                     {q.explanation && (
-                      <div className="rounded-lg border border-border/80 bg-muted/30 p-3 text-xs space-y-1">
+                      <div className="rounded-lg border border-border/80 bg-muted/30 p-3 text-xs space-y-1.5">
                         <span className="font-semibold text-foreground flex items-center gap-1.5">
                           <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-                          Explanation & Solver Solution:
+                          Explanation & Step-by-Step Solution:
                         </span>
-                        <div className="text-muted-foreground leading-relaxed pl-5">
+                        <div className="text-muted-foreground leading-relaxed pl-5 whitespace-pre-line">
                           <MathText text={q.explanation} />
                         </div>
                       </div>

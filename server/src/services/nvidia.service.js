@@ -298,6 +298,9 @@ export function solveGeneratedQuestionWithNvidia(question) {
       {
         role: 'user',
         content: `${solveGeneratedPrompt}\n\nQUESTION:\n${JSON.stringify({
+          section: question.section,
+          category: question.category,
+          subcategory: question.subcategory,
           question_text: question.question_text,
           options: question.options,
           language: question.language

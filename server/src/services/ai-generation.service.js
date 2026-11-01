@@ -60,7 +60,12 @@ export async function createAIQuestion(input) {
   while (attempts < maxAttempts) {
     attempts += 1;
     generated = await generateQuestion(request);
-    checked = await solveGeneratedQuestion(generated);
+    checked = await solveGeneratedQuestion({
+      ...generated,
+      section: request.section,
+      category: request.category,
+      subcategory: request.subcategory
+    });
     if (checked.correct_option && checked.correct_option === generated.correct_option) {
       break;
     }

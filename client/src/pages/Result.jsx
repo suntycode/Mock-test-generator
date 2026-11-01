@@ -639,7 +639,7 @@ export default function Result() {
                         <BookOpen className="h-3.5 w-3.5 text-primary" />
                         Explanation:
                       </p>
-                      <div className="question-typography text-muted-foreground leading-relaxed text-sm">
+                      <div className="question-typography text-muted-foreground leading-relaxed text-sm whitespace-pre-line">
                         <MathText text={item.explanation} />
                       </div>
                     </div>
