@@ -19,6 +19,7 @@ const updateSchema = z.object({
 const listQuerySchema = z.object({
   paperId: z.string().optional(), section: z.string().optional(), category: z.string().optional(), subcategory: z.string().optional(),
   difficulty: z.enum(['easy', 'medium', 'hard']).optional(), origin: z.enum(['extracted', 'ai_generated']).optional(),
+  language: z.enum(['hi', 'en', 'bilingual']).optional(), search: z.string().optional(),
   verified: z.enum(['true', 'false']).optional(), needsReview: z.enum(['true', 'false']).optional(),
   page: z.coerce.number().int().positive().default(1), limit: z.coerce.number().int().positive().max(100).default(25)
 }).passthrough();
@@ -43,14 +44,27 @@ export async function listQuestions(query) {
   const parsed = listQuerySchema.parse(query);
   const { page, limit } = parsed;
   const filter = {};
-  for (const key of ['paperId', 'section', 'category', 'subcategory', 'difficulty', 'origin']) {
+  for (const key of ['paperId', 'section', 'category', 'subcategory', 'difficulty', 'origin', 'language']) {
     if (parsed[key] !== undefined && parsed[key] !== '') filter[key] = parsed[key];
   }
   if (parsed.verified !== undefined) filter.verified = parsed.verified === 'true';
   if (parsed.needsReview !== undefined) filter.needsReview = parsed.needsReview === 'true';
   if (filter.paperId) validId(filter.paperId, 'Paper');
+
+  if (parsed.search && parsed.search.trim()) {
+    const s = parsed.search.trim();
+    filter.$or = [
+      { text: { $regex: s, $options: 'i' } },
+      { 'options.A': { $regex: s, $options: 'i' } },
+      { 'options.B': { $regex: s, $options: 'i' } },
+      { 'options.C': { $regex: s, $options: 'i' } },
+      { 'options.D': { $regex: s, $options: 'i' } },
+      { explanation: { $regex: s, $options: 'i' } }
+    ];
+  }
+
   const [items, total] = await Promise.all([
-    Question.find(filter).sort({ qNo: 1 }).skip((page - 1) * limit).limit(limit).lean(),
+    Question.find(filter).populate('paperId', 'title shift examDate').sort({ qNo: 1 }).skip((page - 1) * limit).limit(limit).lean(),
     Question.countDocuments(filter)
   ]);
   return { items: await redactAnswersDuringAttempts(items), page, limit, total, pages: Math.ceil(total / limit) };
